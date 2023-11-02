@@ -6,13 +6,15 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:07:02 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/01 10:08:11 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/02 21:38:11 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (*s)
@@ -20,5 +22,5 @@ int	ft_strlen(char *s)
 		i++;
 		s++;
 	}
-	return (0);
+	return (i);
 }

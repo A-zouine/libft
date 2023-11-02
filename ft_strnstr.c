@@ -1,29 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 16:25:10 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/02 22:22:47 by aez-zoui         ###   ########.fr       */
+/*   Created: 2023/11/02 22:24:42 by aez-zoui          #+#    #+#             */
+/*   Updated: 2023/11/02 22:46:13 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-#define LIBFT_h
+#include"libft.h"
 
-# include<stddef.h>
-# include<stdio.h>
-# include<string.h>
+char*	ft_strstr(char* str, char* to_find, size_t n)
+{
+	int	i;
+	int	j;
 
-void	*ft_memmove(void *dest, const char *src, size_t n);
-void	*ft_memcpy(void *dest, const void *src, int  n);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
-size_t	ft_strlen(const char *str);
-int	atoi(const char *str);
+	i = 0;
+	j = 0;
 
+	while (str[i] && n--)
+	{
+		j = 0;
+		while (str[i + j] == to_find[j] && n--)
+		{
+			if (to_find[j + 1] == '\0')
+				return (&str[i]);
+			else
+				j++;
+		}
+		i++;
+	}
+	return (0);
 
+}
 
+int	main(void)
+{
+	char *str = "AHMED";
+	char *t_find = "Med";
 
-#endif
+	printf("%s",ft_strstr(str,t_find, 5));
+
+	return (0);
+
+}
