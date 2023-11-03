@@ -6,33 +6,19 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:55 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/02 10:36:33 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:57:06 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
+
 void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
+	unsigned char	*str;
 
-	str = (char *) s;
+	str = (unsigned char *) s;
 	while (n--)
 	{
 		*str++ = '0';
 	}
-}
-
-#include<stdio.h>
-#include <stddef.h>
-int main(void)
-{
-	char str[9];
-
-	ft_bzero(str, 5);
-	ft_bzero(str + 5, 3);
-
-	printf("%s",str);
-
-	return (0);
-
 }

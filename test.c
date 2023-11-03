@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 11:03:27 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 16:21:56 by aez-zoui         ###   ########.fr       */
+/*   Created: 2023/11/03 18:32:17 by aez-zoui          #+#    #+#             */
+/*   Updated: 2023/11/03 19:07:55 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, int n)
+int	main(void)
 {
-	char	*str_dest;
-	char	*str_src;
+	int size = 5;
 
-	str_dest = (unsigned char *)dest;
-	str_src = (unsigned char *)src;
-	while (n--)
-		*str_dest++ = *str_src++;
-	return (dest);
+	while (size--)
+		printf("%d \t",size);
+	printf("\n");
+	size = 5;
+	while (--size)
+		printf("%d \t",size);
+	printf("\n");
+
+	return (0);
 }

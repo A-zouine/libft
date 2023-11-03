@@ -6,7 +6,7 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 12:04:53 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/02 16:24:17 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:52:54 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ void	*ft_memmove(void *dest, const char *src, size_t n)
 	else
 	{
 		while (n--)
-		{
-			*str_dest = *str_src;
-			str_dest++;
-			str_src++;
-		}
+			*str_dest++ = *str_src++;
 	}
 	return (dest);
 }

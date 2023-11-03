@@ -6,9 +6,11 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 21:44:09 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/01 10:06:12 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:13:24 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {

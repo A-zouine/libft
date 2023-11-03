@@ -6,7 +6,7 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:07:25 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/02 21:54:24 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:35:13 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,4 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	while (src[j])
 		j++;
 	return (len_dest + j);
-}
-int main() {
-    char destination[4] = "He";
-    char source[] = "World!";
-
-    // Concaténer source à la fin de destination
-    size_t total_length = ft_strlcat(destination, source, sizeof(destination));
-
-    printf("Destination: %s\n", destination);
-    printf("Total Length: %zu\n", total_length);
-
-    return 0;
 }

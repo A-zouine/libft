@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 11:03:27 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 16:21:56 by aez-zoui         ###   ########.fr       */
+/*   Created: 2023/10/31 12:33:12 by aez-zoui          #+#    #+#             */
+/*   Updated: 2023/10/31 14:10:41 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<unistd.h>
 
-void	*ft_memcpy(void *dest, const void *src, int n)
+int	ft_get_len_string(char *str)
 {
-	char	*str_dest;
-	char	*str_src;
+	int	i;
 
-	str_dest = (unsigned char *)dest;
-	str_src = (unsigned char *)src;
-	while (n--)
-		*str_dest++ = *str_src++;
-	return (dest);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_get_len_string(s));
 }
