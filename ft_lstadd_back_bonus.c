@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 18:32:17 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 19:07:55 by aez-zoui         ###   ########.fr       */
+/*   Created: 2023/11/16 15:18:02 by aez-zoui          #+#    #+#             */
+/*   Updated: 2023/11/16 15:18:07 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int size = 5;
+	t_list	*temp;
 
-	while (size--)
-		printf("%d \t",size);
-	printf("\n");
-	size = 5;
-	while (--size)
-		printf("%d \t",size);
-	printf("\n");
-
-	return (0);
+	if (lst && new)
+	{
+		if (!(*lst))
+			*lst = new;
+		else
+		{
+			temp = ft_lstlast(*lst);
+			temp->next = new;
+		}
+	}
 }

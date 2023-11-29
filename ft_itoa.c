@@ -1,50 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atio.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 21:55:37 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 21:39:03 by aez-zoui         ###   ########.fr       */
+/*   Created: 2023/11/05 13:48:50 by aez-zoui          #+#    #+#             */
+/*   Updated: 2023/11/18 21:43:56 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(char s)
+static long	len_word(long long nb)
 {
-	if (s >= 'a' && s <= 'z' )
-		return (1);
-	else if (s >= 'A' && s <= 'Z')
-		return (1);
-	else
-		return (0);
+	long	i;
+
+	i = 0;
+	if (nb < 0)
+	{
+		i++;
+		nb = -nb;
+	}
+	if (nb == 0)
+		i++;
+	while (nb > 0)
+	{
+		i++;
+		nb = nb / 10;
+	}
+	return (i);
 }
 
-int	ft_atoi(const char *str)
+char	*ft_itoa(int b)
 {
-	int	i;
-	int	sign;
-	int	result;
+	long		size;
+	char		*str;
+	long long	n;
 
-	result = 0;
-	sign = 1;
-	i = 0;
-	while ((str[i] <= ' ') || ft_isalpha(str[i]))
-	{
-		i++;
+	n = b;
+	size = len_word(n);
+	str = (char *)malloc(size + 1);
+	if (!str)
+		return (NULL);
+	if (n < 0)
+	{	
+		str[0] = '-';
+		n *= -1;
 	}
-	if (str[i] == '-' || str[i] == '+')
+	if (n == 0)
+		str[0] = '0';
+	str[size--] = '\0';
+	while (n > 0)
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		str[size--] = ((n % 10) + '0');
+		n /= 10;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * result);
+	return (str);
 }

@@ -6,13 +6,15 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:57:23 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/10/31 16:00:15 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:16:28 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_tolower(int ch)
 {
-	if (ch >= 'A' && ch <= 'Z')
+	if (ch >= 65 && ch <= 90)
 		ch = ch + 32;
 	return (ch);
 }

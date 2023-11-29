@@ -6,27 +6,25 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:31:40 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 21:08:17 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:14:56 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int chr)
+char	*ft_strrchr(char const *str, int c)
 {
-	int	i;
-	int	j;
+	char const	*res;
 
-	i = 0;
-	j = -1;
-	while (str[i])
+	res = NULL;
+	while (*str)
 	{
-		if (str[i] == chr)
-			j = i;
-		i++;
+		if (*str == (char)c)
+			res = str;
+		str++;
 	}
-	if (j != -1)
-		return ((char *)&str[j]);
+	if (*str == (char)c)
+		return ((char *)str);
 	else
-		return (NULL);
+		return ((char *)res);
 }

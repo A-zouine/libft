@@ -6,17 +6,22 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:28:34 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/10/31 17:17:12 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/12 11:30:03 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-const char	*ft_strchr(const char *str, int ch)
+#include "libft.h"
+
+char	*ft_strchr(char const *str, int c)
 {
-	while (*str)
+	while (*str != '\0')
 	{
-		if (*str == ch)
-			return (str);
+		if (*str == (char)c)
+			return ((char *)str);
 		str++;
 	}
-	return (0);
+	if (*str == (char)c)
+		return ((char *)str);
+	else
+		return (NULL);
 }

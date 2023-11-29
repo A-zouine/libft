@@ -5,60 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 20:14:23 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/10/31 12:32:38 by aez-zoui         ###   ########.fr       */
+/*   Created: 2023/11/08 12:40:05 by aez-zoui          #+#    #+#             */
+/*   Updated: 2023/11/18 13:00:51 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_sep(char const c, char const s)
+#include "libft.h"
+
+static int	count_word(char const *s, char c)
 {
-	if (c == s)
-		return (1);
-	return (0);
-}
-int	ft_count_word(char const *s, char c)
-{
-	int	i;
+	int	f;
 	int	count_word;
+	int	i;
 
 	count_word = 0;
 	i = 0;
+	f = 0;
 	while (s[i])
 	{
-		while (s[i] && !is_sep(s[i], c))
-			i++;
-		if(s[i] != '\0')
+		if (s[i] == c)
+		{
+			f = 0;
+		}
+		else if (f == 0)
+		{
+			f = 1;
 			count_word++;
+		}
 		i++;
 	}
 	return (count_word);
 }
 
-int	len_word(char const *s, char c);
-
-char	**ft_split(char const *s, char c)
+static char	*ft_create_word(char const *str, char c)
 {
-	int	i;
-	int	size;
-	char	**split;
+	char	*dest;
+	int		i;
 
-	size = ft_count_word(char const *s, char c ) + 1;
 	i = 0;
-	while (*s)
+	while (str[i] && str[i] != c)
+		i++;
+	dest = (char *)malloc(sizeof(char) * i + 1);
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != c)
 	{
-		if(is_sep(*s, c))
-		{
-			ft_create_word(s, 
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
-#include<stdio.h>
-int	main(void)
+static	char	**ft_free(char **split, int i)
 {
-	char	*str;
+	while (--i)
+		free(split[i]);
+	free(split);
+	return (NULL);
+}
 
-	str = "-nBonjour tonut monden";
-	char c = '-';
+char	**ft_split(char const *str, char c)
+{
+	char	**dest;
+	int		i;
 
-	printf("%d",ft_count_word(str, c));
-
-	return (0);
+	if (!str)
+		return (NULL);
+	i = 0;
+	dest = (char **)malloc(sizeof(char *) * (count_word(str, c) + 1));
+	if (!dest)
+		return (NULL);
+	while (*str)
+	{
+		while (*str && *str == c)
+			str++;
+		if (*str && *str != c)
+		{
+			dest[i++] = ft_create_word(str, c);
+			if (dest[i - 1] == NULL)
+				return (ft_free(dest, i));
+			while (*str && *str != c)
+				str++;
+		}
+	}
+	dest[i] = NULL;
+	return (dest);
 }

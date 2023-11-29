@@ -6,7 +6,7 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:11:29 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 14:45:46 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:43:18 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 int	ft_isalnum(int ch)
 {
-	if (ch >= 'a' && ch <= 'z')
-		return (1);
-	else if (ch >= 'A' && ch <= 'Z')
-		return (1);
-	else if (ch >= '0' && ch <= '9')
-		return (1);
-	else
-		return (0);
+	return (ft_isdigit(ch) || ft_isalpha(ch));
 }

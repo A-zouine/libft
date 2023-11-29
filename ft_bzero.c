@@ -6,7 +6,7 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:55 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 15:57:06 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:56:12 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*str;
+	char	*str;
 
-	str = (unsigned char *) s;
+	str = (char *) s;
 	while (n--)
-	{
-		*str++ = '0';
-	}
+		*(str++) = 0;
 }

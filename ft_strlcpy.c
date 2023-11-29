@@ -6,21 +6,23 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:39:25 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 19:15:25 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:25:20 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	src_len;
 
-	i = 0;
-	while (src[i])
-		i++;
-	while (--size && *src)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (i);
+	src_len = ft_strlen(src);
+	if (src_len + 1 < dstsize)
+		ft_memcpy(dst, src, src_len + 1);
+	else if (dstsize != 0)
+	{
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = 0;
+	}
+	return (src_len);
 }

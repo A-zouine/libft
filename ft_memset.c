@@ -6,7 +6,7 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:28:13 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/11/03 15:15:38 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:18:30 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	str = (unsigned char *)s;
 	while (n--)
 	{
-		*str++ = (unsigned char )c;
+		*(str++) = (unsigned char )c;
 	}
 	return (s);
 }

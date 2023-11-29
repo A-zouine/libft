@@ -6,15 +6,16 @@
 /*   By: aez-zoui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:43:13 by aez-zoui          #+#    #+#             */
-/*   Updated: 2023/10/30 20:09:30 by aez-zoui         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:38:49 by aez-zoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
+#include "libft.h"
 
-int is_trim(char const c, char const *trim)
+static int	ft_is_trim(char const c, char const *trim)
 {
 	int	i;
+
 	i = 0;
 	while (trim[i])
 	{
@@ -25,62 +26,70 @@ int is_trim(char const c, char const *trim)
 	return (0);
 }
 
-int	get_len_str(char const *str, char const *trim)
+static	int	ft_get_position_first(char const *str, char const *trim)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i])
+	while (*str && ft_is_trim(*str, trim))
 	{
-		if (is_trim(str[i],trim))
-		{
-			i++;
-			continue;
-		}
 		i++;
-		j++;
+		str++;
 	}
-	return (j);
+	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+static int	ft_get_last_position(char const *str, char const *trim)
 {
+	int	len;
 	int	i;
-	int	j;
-	char	*str_trim;
-	int	size;
 
-	size = get_len_str(s1,set) + 1;
-	str_trim = (char *)malloc(size);
-	if (!str_trim)
+	len = ft_strlen(str) - 1;
+	i = 0;
+	while (str[len] && ft_is_trim(str[len], trim))
+	{
+		len--;
+		i++;
+	}
+	return (len);
+}
+
+static int	ft_get_str_len(char const *str, char const *sep)
+{
+	int	end;
+	int	start;
+
+	end = ft_get_last_position(str, sep);
+	if (end == -1)
 		return (0);
-	i = 0;
-	j = 0;
-	while (s1[i])
-	{
-		if (is_trim(s1[i], set))
-		{
-			i++;
-			continue;
-		}
-		str_trim[j] = s1[i];
-		i++;
-		j++;
-	}
-	return (str_trim);
+	start = ft_get_position_first(str, sep);
+	return (++end - start);
 }
 
-#include<stdio.h>
-int	main(void)
+char	*ft_strtrim(char const *s1, char const *sep)
 {
-	char	*str = "AHMEDHZOUIHMK";
-	char 	*trim = "AH";
+	int		len;
+	char	*trim;
+	int		i;
+	int		start;
 
-	printf("%d",get_len_str(str,trim));
-	printf("\n%s",ft_strtrim(str,trim));
-
-
-	return (0);
+	i = 0;
+	trim = NULL;
+	if (s1 != NULL && sep != NULL)
+	{
+		i = 0;
+		len = ft_get_str_len(s1, sep) + 1;
+		trim = (char *)malloc(len);
+		if (!trim)
+			return (0);
+		start = ft_get_position_first(s1, sep);
+		while (i < len - 1)
+		{
+			trim[i] = s1[start];
+			start++;
+			i++;
+		}
+		trim[i] = '\0';
+	}
+	return (trim);
 }
